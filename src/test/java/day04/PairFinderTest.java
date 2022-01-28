@@ -9,7 +9,7 @@ class PairFinderTest {
     @Test
     void testPairFinder() {
         PairFinder pf = new PairFinder();
-        int[] arr = {7, 1, 1, 1, 1, 1, 5, 7, 3, 3, 5, 7, 6, 7};
+        int[] arr = {5,1,4,5};
         System.out.println(pf.findPairs(arr));
     }
 }
