@@ -16,23 +16,21 @@ public class OrderService {
         orders.add(order);
     }
 
-    public long getNumberOfOrders(String s) {
-
+    public long getNumberOfOrdersWithStatus(String s) {
         return orders.stream()
                 .filter(o -> o.getStatus().equals(s))
                 .count();
     }
 
     public List<Order> getOrdersBetweenDates(LocalDate date1, LocalDate date2) {
-
         return orders.stream()
                 .filter(o -> o.getOrderDate().isAfter(date1) && o.getOrderDate().isBefore(date2))
                 .collect(Collectors.toList());
     }
 
-    public boolean IsLessProductThan(int min) {
+    public boolean IsLessProductThan(int number) {
         return orders.stream()
-                .anyMatch(o -> o.getProducts().size() < min);
+                .anyMatch(o -> o.getProducts().size() < number);
     }
 
     public Order getOrderWithMaxNumberOfProducts() {
@@ -46,4 +44,35 @@ public class OrderService {
                 .filter(o -> o.getProducts().stream().anyMatch(p -> p.getCategory().equals(s))).toList();
     }
 
+    public long getback(String s) {
+        int count=0;
+        for (Order o: orders) {
+            if (o.getStatus().equals(s)) {
+                count++;
+            }
+        }
+
+
+        return orders.stream()
+                .filter(order -> order.getStatus().equals(s))
+                .count();
+
+
+    }
+
+    public Order getback2(String name) {
+        return orders.stream()
+                .sorted(Comparator.comparing(order -> order.getProducts().size()))
+                .findFirst().get();
+
+
+
+    }
+
+
 }
+
+
+// 1., milyen fontos metódusok vannak sztreamben?
+// ezek mit adnak vissza? pl. long, optional???
+// lehet streamben streamet
