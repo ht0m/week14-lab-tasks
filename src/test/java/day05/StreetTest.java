@@ -10,7 +10,6 @@ class StreetTest {
     void testStreet() {
         Street street = new Street();
         street.readFile();
-
     }
 
 }

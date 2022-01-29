@@ -18,30 +18,54 @@ public class Street {
                 String[] fields = scanner.nextLine().split(SEPARATOR);
                 String key = fields[0];
                 int newValue = Integer.parseInt(fields[1]) % 2 == 0 ? 0 : 1;
-                if (streetView.get(key) == null) {
-                    streetView.put(key, new ArrayList());
-                }
-                streetView.get(key).add(newValue);
+                putToMap(key, newValue);
             }
         } catch (IOException ioe) {
             throw new IllegalStateException("Cannot read file");
         }
 
+        transformValuesToHouseNumbers();
+
+    }
+
+    private void transformValuesToHouseNumbers() {
         for (Map.Entry<String, List<Integer>> actual : streetView.entrySet()) {
-            int even = 2;
-            int odd = 1;
+            HouseNumber houseNumber = new HouseNumber();
             for (int i = 0; i < actual.getValue().size(); i++) {
-                if (actual.getValue().get(i) == 0) {
-                    actual.getValue().set(i, even);
-                    even += 2;
-                } else {
-                    actual.getValue().set(i, odd);
-                    odd += 2;
+                switch (actual.getValue().get(i)) {
+                    case 0:
+                        actual.getValue().set(i, houseNumber.getEven());
+                        break;
+                    case 1:
+                        actual.getValue().set(i, houseNumber.getOdd());
                 }
             }
         }
 
+
+//        for (Map.Entry<String, List<Integer>> actual : streetView.entrySet()) {
+//            int even = 2;
+//            int odd = 1;
+//            for (int i = 0; i < actual.getValue().size(); i++) {
+//                if (actual.getValue().get(i) == 0) {
+//                    actual.getValue().set(i, even);
+//                    even += 2;
+//                } else {
+//                    actual.getValue().set(i, odd);
+//                    odd += 2;
+//                }
+//            }
+//        }
         System.out.println(streetView);
+    }
+
+    private void putToMap(String key, int newValue) {
+        List<Integer> actual = streetView.get(key);
+        if (actual == null) {
+            actual = new ArrayList<>();
+            streetView.put(key, actual);
+        }
+        actual.add(newValue);
     }
 }
 
