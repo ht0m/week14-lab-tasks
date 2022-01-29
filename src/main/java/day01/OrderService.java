@@ -43,36 +43,8 @@ public class OrderService {
         return orders.stream()
                 .filter(o -> o.getProducts().stream().anyMatch(p -> p.getCategory().equals(s))).toList();
     }
-
-    public long getback(String s) {
-        int count=0;
-        for (Order o: orders) {
-            if (o.getStatus().equals(s)) {
-                count++;
-            }
-        }
-
-
-        return orders.stream()
-                .filter(order -> order.getStatus().equals(s))
-                .count();
-
-
-    }
-
-    public Order getback2(String name) {
-        return orders.stream()
-                .sorted(Comparator.comparing(order -> order.getProducts().size()))
-                .findFirst().get();
-
-
-
-    }
-
-
 }
 
 
-// 1., milyen fontos metódusok vannak sztreamben?
-// ezek mit adnak vissza? pl. long, optional???
-// lehet streamben streamet
+
+

@@ -1,10 +1,8 @@
 package day01;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,19 +50,6 @@ class OrderServiceTest {
         orderService.saveOrder(o3);
         orderService.saveOrder(o4);
         orderService.saveOrder(o5);
-    }
-
-
-    @Test
-    void IsLessProductThan() {
-        assertTrue(orderService.IsLessProductThan(4));
-        assertFalse(orderService.IsLessProductThan(1));
-    }
-
-    @Test
-    void testgGtOrdersWithCategory(){
-        List<Order> result = orderService.getOrdersWithCategory("Book");
-        System.out.println(result);
     }
 
 }
