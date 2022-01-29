@@ -26,6 +26,7 @@ public class Street {
 
         transformValuesToHouseNumbers();
 
+
     }
 
     private void transformValuesToHouseNumbers() {
@@ -66,6 +67,13 @@ public class Street {
             streetView.put(key, actual);
         }
         actual.add(newValue);
+    }
+
+    public int streamHomeWork(String streetName) {
+        return (int) streetView.get(streetName).stream()
+                .mapToInt(i->i)
+                .filter(i->i%2==0)
+                .count();
     }
 }
 

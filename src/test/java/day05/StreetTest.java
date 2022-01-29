@@ -10,6 +10,10 @@ class StreetTest {
     void testStreet() {
         Street street = new Street();
         street.readFile();
+
+        //HomeWork
+        assertEquals(3, street.streamHomeWork("Petofi"));
+        assertEquals(2, street.streamHomeWork("Kossuth"));
     }
 
 }
