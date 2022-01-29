@@ -13,18 +13,15 @@ public class MovieService {
         movies.add(movie);
     }
 
-    //find movie
-    // ilyesmik lesznek a vizsgán
+
     //flatmap lehet, hoyg lesz... : összefésüli a belső listákat, ha többdimenziós a struktúra
     //onnantó meg lehet hívni a metódusokat
-    //itt vannak ismétlődések, distinct-tel lehet kiszűrni a duplikációkat
 
     public List<Movie> getMoviesWithActors(String actor) {
         return movies.stream()
-                //
-                .filter(m->m.getActors().contains(actor))
-//                .filter(movie -> movie.getActors().stream().anyMatch(a -> a.equals(actor)))
+                .filter(movie -> movie.getActors().contains(actor))
                 .toList();
+
     }
 
     public int getLongestFilm() {
