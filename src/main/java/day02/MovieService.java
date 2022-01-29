@@ -12,11 +12,7 @@ public class MovieService {
     public void addMovie(Movie movie) {
         movies.add(movie);
     }
-
-
-    //flatmap lehet, hoyg lesz... : összefésüli a belső listákat, ha többdimenziós a struktúra
-    //onnantó meg lehet hívni a metódusokat
-
+    
     public List<Movie> getMoviesWithActors(String actor) {
         return movies.stream()
                 .filter(movie -> movie.getActors().contains(actor))
